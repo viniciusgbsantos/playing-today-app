@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renderizando de forma condicional</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+    <script type="text/babel">
+      const TYPE_HEAVY_METAL = 'TYPE_HEAVY_METAL';
+      const TYPE_PUNK_ROCK = 'TYPE_PUNK_ROCK';
+      
+      const HeavyMetal = () => {
+        return (
+          <ul className="heavy-metal">
+            <h3>Three suggestions of Heavy Metal bands</h3>
+            <li>Iron Maiden</li>
+            <li>Judas Priest</li>
+            <li>Black Sabbath</li>
+          </ul>
+        );
+      }
+  
+      const PunkRock = () => {
+        return (
+          <ul className="punk-rock">
+          <h3>Three suggestions of Punk Rock bands</h3>
+            <li>Ramones</li>
+            <li>Sex Pistols</li>
+            <li>Dead Kennedys</li>
+          </ul>
+        );
+      }
+  
+      const PlayingToday = ({ type }) => {
+        const choosenType  = (type === TYPE_HEAVY_METAL) ? <PunkRock /> : <HeavyMetal />;
+        return choosenType;
+      }
+  
+      ReactDOM.render(<PlayingToday type={TYPE_PUNK_ROCK} />, document.getElementById('root'));
+    </script>
+</body>
+</html>
